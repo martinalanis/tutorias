@@ -48,6 +48,7 @@ Route::group(['prefix' => 'tutor', 'middleware' => ['auth', 'tutor']], function(
 		return view('tutor.index');
 	});
 
+	Route::resource('encuestas', 'PollController');
 });
 
 Route::group(['prefix' => 'tutorado', 'middleware' => ['auth', 'tutorado']], function() {
@@ -55,5 +56,6 @@ Route::group(['prefix' => 'tutorado', 'middleware' => ['auth', 'tutorado']], fun
 	Route::get('/', function () {
 		return view('tutorado.index');
 	});
+
 
 });

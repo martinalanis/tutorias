@@ -30,4 +30,12 @@ class User extends Authenticatable
     public function roles() {
         return $this->hasMany('App\Rol');
     }
+
+    public function polls() {
+        return $this->hasMany('App\Poll');
+    }
+
+    public function answers() {
+        return $this->hasMany('App\Answer');
+    }
 }

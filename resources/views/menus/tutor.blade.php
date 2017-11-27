@@ -39,8 +39,8 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-submenu>Encuestas <span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="#!">Ver encuestas</a></li>
-				<li><a href="#!">Crear nueva</a></li>
+				<li><a href="{{route('encuestas.index')}}">Ver encuestas</a></li>
+				<li><a href="{{route('encuestas.create')}}">Crear nueva</a></li>
 			</ul>
 		</li>
 		<li class="dropdown">
