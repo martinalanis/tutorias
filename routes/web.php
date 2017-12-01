@@ -34,6 +34,11 @@ Route::group(['prefix' => 'administrador',  'middleware' => ['auth', 'administra
 
 	Route::resource('encuestas', 'PollController');
 
+	Route::get('/ver-respuesta/{id}', [
+		'uses' => 'AnswerController@showAnswer',
+		'as' => 'verRespuesta'
+	]);
+
 });
 
 Route::group(['prefix' => 'tutorado', 'middleware' => ['auth', 'tutorado']], function() {
@@ -50,6 +55,11 @@ Route::group(['prefix' => 'tutorado', 'middleware' => ['auth', 'tutorado']], fun
 	Route::get('/responder-encuesta/{id}', [
 		'uses' => 'AnswerController@answerPoll',
 		'as' => 'responderEncuesta'
+	]);
+
+	Route::post('/guardar-encuesta', [
+		'uses' => 'AnswerController@storeAnswer',
+		'as' => 'guardarEncuesta'
 	]);
 
 });

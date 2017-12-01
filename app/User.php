@@ -36,6 +36,6 @@ class User extends Authenticatable
     }
 
     public function answers() {
-        return $this->hasMany('App\Answer');
+        return $this->belongsToMany('App\Poll', 'answers')->withPivot('answer', 'active')->withTimestamps();
     }
 }

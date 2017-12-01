@@ -11,7 +11,7 @@ class Poll extends Model
 
     protected $fillable = ['name', 'user_id', 'poll', 'active'];
 
-    public function user() {
-    	return $this->belongsTo('App\User');
+    public function answers() {
+    	return $this->belongsToMany('App\User', 'answers')->withPivot('answer', 'active')->withTimestamps();
     }
 }

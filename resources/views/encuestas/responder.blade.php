@@ -38,7 +38,7 @@
 				<h3 class="panel-title"><b>ENCUESTA:</b> {{ strtoupper($poll->name)}}</h3>
 			</div>
 			<div class="panel-body" id="form-body">
-				{!! Form::open(['route' => 'encuestas.store', 'method' => 'post']) !!}
+				{!! Form::open(['route' => 'guardarEncuesta', 'method' => 'post']) !!}
 				<?php
 					$preguntas = json_decode($poll->poll, true);
 				?>
@@ -46,16 +46,16 @@
 					{{-- {{ dd($preguntas) }} --}}
 				@foreach($preguntas as $pregunta)
 
-			
 				<div class="form-group label-floating">
 
 		            {!! Form::label('respuesta[]', $pregunta['value'].':' , ['class' => 'control-label']) !!}
-		            {!! Form::text('respuesta[]', null, ['class' => 'form-control']) !!}
+		            {!! Form::text('respuesta[]', null, ['class' => 'form-control', 'required']) !!}
 		            {!! Form::hidden('pregunta[]', $pregunta['value']) !!}
 		        </div>
 
 				@endforeach
 				
+		            {!! Form::hidden('poll', $poll->id) !!}
 
 		    </div>{{-- Panel-body ends --}}
 

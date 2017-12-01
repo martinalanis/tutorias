@@ -16,7 +16,7 @@ class PollController extends Controller
     public function index()
     {
         $polls = Poll::all();
-        return view('encuestas.lista', compact('polls', $polls));
+        return view('encuestas.lista', compact('polls'));
     }
 
     /**
@@ -66,9 +66,12 @@ class PollController extends Controller
      * @param  \App\Poll  $poll
      * @return \Illuminate\Http\Response
      */
-    public function show(Poll $poll)
+    public function show($poll)
     {
         //
+        $poll = Poll::find($poll);
+
+        return view('encuestas.consultar', compact('poll'));
     }
 
     /**
@@ -77,7 +80,7 @@ class PollController extends Controller
      * @param  \App\Poll  $poll
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poll $poll)
+    public function edit($poll)
     {
         //
     }

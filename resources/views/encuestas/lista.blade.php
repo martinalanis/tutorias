@@ -31,10 +31,14 @@
 									<td>{{ $poll->name }}</td>
 									<td class="text-center">
 										@if(Auth::user()->type == 'tutorado')
-										<a href="{{ route('responderEncuesta', $poll->id) }}" class="btn btn-primary btn-raised btn-mini">responder</a>
+											@if(Auth::user()->answers()->where('poll_id', $poll->id)->count() >0)
+												<a href="{{ route('responderEncuesta', $poll->id) }}" class="btn btn-primary btn-raised btn-mini disabled">contestada</a>
+											@else
+												<a href="{{ route('responderEncuesta', $poll->id) }}" class="btn btn-primary btn-raised btn-mini">responder</a>
+											@endif
 										@else
-										<a href="" class="btn btn-primary btn-raised btn-mini">ver</a>
-										<a href="" class="btn btn-primary btn-raised btn-mini">editar</a>
+										<a href="{{ route('encuestas.show', $poll->id) }}" class="btn btn-primary btn-raised btn-mini">ver</a>
+										{{-- <a href="" class="btn btn-primary btn-raised btn-mini">editar</a> --}}
 										@endif
 									</td>
 								</tr>

@@ -71,6 +71,7 @@
 		        <button id="add" class="btn btn-warning btn-raised">Agregar pregunta</button>
 
 		        <div class="panel-footer text-right">
+		        	<a href="{{ URL::previous() }}" class="btn btn-default">regresar</a>
 		            <button type="submit" class="btn btn-primary btn-raised">Guardar</button>
 		        </div>
 		    {!! Form::close() !!}
