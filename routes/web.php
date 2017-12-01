@@ -34,7 +34,7 @@ Route::group(['prefix' => 'administrador',  'middleware' => ['auth', 'administra
 
 	Route::resource('encuestas', 'PollController');
 
-	Route::get('/ver-respuesta/{id}', [
+	Route::post('/ver-respuesta', [
 		'uses' => 'AnswerController@showAnswer',
 		'as' => 'verRespuesta'
 	]);

@@ -56,13 +56,12 @@ class AnswerController extends Controller
 
     }
 
-    public function showAnswer($id) {
+    public function showAnswer(Request $request) {
 
-    	$respuestas = DB::table('answers')->where('id', $id)->get();
+    	$respuestas = $request->input('respuestas');
     	// dd(json_decode($respuestas,true));
-    	$encuesta = Poll::find($respuestas[0]->poll_id);
-    	$respuestas = $respuestas[0]->answer;
-
+    	$encuesta = $request->input('nombre');
+    	// $respuestas = $respuestas[0]->answer;
 
     	return view('encuestas.ver', compact('respuestas', 'encuesta'));
     }

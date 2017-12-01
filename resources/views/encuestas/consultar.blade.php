@@ -26,6 +26,9 @@
 					@endforeach
 				</ul>
 			</div>
+	        <div class="panel-footer text-right">
+	        	<a href="{{ route('encuestas.index') }}" class="btn btn-success btn-raised">regresar</a>	           
+	        </div>
 		</div>
 	</div>
 
@@ -34,7 +37,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title text-center">Alumnos que han respondido</h3>
 			</div>
-			<div class="panel-body ">
+			<div class="panel-body">
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -48,10 +51,14 @@
 								<tr>
 									<td>{{ $answer->name.' '.$answer->last_name.' '.$answer->second_last_name }}</td>
 									<td class="text-center">										
-										<a href="{{ route('verRespuesta', $answer->id) }}" class="btn btn-primary btn-raised btn-mini">ver</a>
+										<a href="" class="btn btn-primary btn-raised btn-mini" onclick="event.preventDefault();document.getElementById('ver{{ $answer->id }}').submit();">ver</a>
+										{{ Form::open(['route' => 'verRespuesta', 'type' => 'post', 'id' => 'ver'.$answer->id, 'style' => 'display: inline-block;']) }}
+		                                    {{ Form::hidden('nombre', $poll->name) }}
+		                                    {{ Form::hidden('respuestas', $answer->pivot->answer) }}
+		                                {{ Form::close() }}
 									</td>
 								</tr>
-								{{-- {{dd($answer)}} --}}
+								{{-- {{dd($info)}} --}}
 							@endforeach
 						</tbody>
 					</table>
