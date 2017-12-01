@@ -4,7 +4,7 @@
 
 @section('menu')
 
-@include('menus.tutor')
+@include('menus.'.Session::get('type'))
 
 @endsection
 
@@ -29,7 +29,14 @@
 							@foreach($polls as $poll)
 								<tr>
 									<td>{{ $poll->name }}</td>
-									<td class="text-center"><a href="" class="btn btn-primary btn-raised btn-mini">ver</a> <a href="" class="btn btn-primary btn-raised btn-mini">editar</a></td>
+									<td class="text-center">
+										@if(Auth::user()->type == 'tutorado')
+										<a href="{{ route('responderEncuesta', $poll->id) }}" class="btn btn-primary btn-raised btn-mini">responder</a>
+										@else
+										<a href="" class="btn btn-primary btn-raised btn-mini">ver</a>
+										<a href="" class="btn btn-primary btn-raised btn-mini">editar</a>
+										@endif
+									</td>
 								</tr>
 							@endforeach
 						</tbody>

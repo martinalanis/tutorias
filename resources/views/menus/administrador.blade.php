@@ -7,6 +7,7 @@
 				<li><a href="#!">Carreras</a></li>
 				<li><a href="#!">Profesores</a></li>
 				<li><a href="#!">Grupos</a></li>
+				<li><a href="{{route('encuestas.create')}}">Encuestas</a></li>
 			</ul>
 		</li>
 		<li class="dropdown">
@@ -14,6 +15,7 @@
 			<ul class="dropdown-menu">
 				<li><a href="#!">Alumnos</a></li>
 				<li><a href="#!">Profesores</a></li>
+				<li><a href="{{route('encuestas.index')}}">Encuestas</a></li>
 			</ul>
 		</li>
 		<li class="dropdown">

@@ -26,18 +26,38 @@ Route::get('/seleccion', function(){
 	return view('auth.seleccion');
 });
 
-Route::group(['prefix' => 'administrador', 'middleware' => ['auth', 'administrador']], function() {
+Route::group(['prefix' => 'administrador',  'middleware' => ['auth', 'administrador']], function() {
 
 	Route::get('/', function () {
-		return view('administrador.index');
+		return view('home');
 	});
+
+	Route::resource('encuestas', 'PollController');
+
+});
+
+Route::group(['prefix' => 'tutorado', 'middleware' => ['auth', 'tutorado']], function() {
+
+	Route::get('/', function () {
+		return view('home');
+	});
+
+	Route::get('/encuestas', [
+		'uses' => 'AnswerController@showPolls',
+		'as' => 'encuestas'
+	]);
+
+	Route::get('/responder-encuesta/{id}', [
+		'uses' => 'AnswerController@answerPoll',
+		'as' => 'responderEncuesta'
+	]);
 
 });
 
 Route::group(['prefix' => 'coordinador', 'middleware' => ['auth', 'coordinador']], function() {
 
 	Route::get('/', function () {
-		return view('coordinador.index');
+		return view('home');
 	});
 
 });
@@ -45,17 +65,7 @@ Route::group(['prefix' => 'coordinador', 'middleware' => ['auth', 'coordinador']
 Route::group(['prefix' => 'tutor', 'middleware' => ['auth', 'tutor']], function() {
 
 	Route::get('/', function () {
-		return view('tutor.index');
+		return view('home');
 	});
-
-	Route::resource('encuestas', 'PollController');
-});
-
-Route::group(['prefix' => 'tutorado', 'middleware' => ['auth', 'tutorado']], function() {
-
-	Route::get('/', function () {
-		return view('tutorado.index');
-	});
-
 
 });

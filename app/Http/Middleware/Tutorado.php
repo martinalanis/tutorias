@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Tutorado
 {
@@ -17,7 +18,8 @@ class Tutorado
     public function handle($request, Closure $next)
     {
         if(Auth::user()->type == 'tutorado') {
-            
+
+            Session::put('type', 'tutorado');
             return $next($request);
 
         }

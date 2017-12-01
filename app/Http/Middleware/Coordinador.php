@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Coordinador
 {
@@ -19,7 +20,13 @@ class Coordinador
         if(Auth::user()->type != 'tutorado') {
 
             foreach (Auth::user()->roles->unique('rol') as $rol) {
-                if($rol->rol == 'coordinador' ) return $next($request);
+                if($rol->rol == 'coordinador' ) {
+
+                    Session::put('type', 'coordinador');
+                    return $next($request);
+
+                }
+
             }
 
         }

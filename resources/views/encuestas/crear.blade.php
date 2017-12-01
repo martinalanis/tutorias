@@ -4,7 +4,7 @@
 
 @section('menu')
 
-@include('menus.tutor')
+@include('menus.'.Session::get('type'))
 
 @endsection
 
@@ -33,8 +33,8 @@
 				{!! Form::open(['route' => 'encuestas.store', 'method' => 'post']) !!}
 
 				<div class="form-group label-floating">
-		            {!! Form::label('name',  'Nombre de la encusta', ['class' => 'control-label']) !!}
-		            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+		            {!! Form::label('name',  'Nombre de la encuesta', ['class' => 'control-label']) !!}
+		            {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
 		        </div>
 				
 				<div class="col-sm-4 col-sm-offset-4">
@@ -44,7 +44,7 @@
 
 		        <div class="form-group label-floating">
 		            {!! Form::label('pregunta[]',  'Ingrese pregunta', ['class' => 'control-label']) !!}
-		            {!! Form::text('pregunta[]', null, ['class' => 'form-control']) !!}
+		            {!! Form::text('pregunta[]', null, ['class' => 'form-control', 'required']) !!}
 		        </div>
 
 		        <div class="form-group label-floating">

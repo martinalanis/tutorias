@@ -15,8 +15,8 @@ class PollController extends Controller
      */
     public function index()
     {
-        $polls = Poll::where('user_id', Auth::user()->id)->get();
-        return view('tutor.encuestas', compact('polls', $polls));
+        $polls = Poll::all();
+        return view('encuestas.lista', compact('polls', $polls));
     }
 
     /**
@@ -26,7 +26,7 @@ class PollController extends Controller
      */
     public function create()
     {
-        return view('tutor.create_encuesta');
+        return view('encuestas.crear');
     }
 
     /**
@@ -39,6 +39,7 @@ class PollController extends Controller
     {
         $poll = new Poll();
         $poll->user_id = Auth::user()->id;
+        $poll->name = $request->input('name');
         $poll_quiz = [];
         $i = 1;
 
