@@ -26,5 +26,7 @@ class RolesSeeder extends Seeder
         	'rol' => 'tutor',
         	'career_id' => 'ISIC']
         	]);
+
+        factory(App\Rol::class, 6)->create();
     }
 }

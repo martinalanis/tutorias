@@ -78,4 +78,11 @@ Route::group(['prefix' => 'tutor', 'middleware' => ['auth', 'tutor']], function(
 		return view('home');
 	});
 
+	Route::resource('anexo19', 'Anexo19Controller');
+
+	Route::get('/getAlumnos/{id}', [
+		'uses' => 'Anexo19Controller@getAlumnos',
+		'as' => 'getAlumnos'
+	]);
+
 });

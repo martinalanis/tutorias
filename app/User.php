@@ -38,4 +38,20 @@ class User extends Authenticatable
     public function answers() {
         return $this->belongsToMany('App\Poll', 'answers')->withPivot('answer', 'active')->withTimestamps();
     }
+
+    public function tutor_de() {
+        return $this->hasMany('App\Group');
+    }
+
+    public function alumno_de() {
+        return $this->belongsTo('App\Group');
+    }
+
+    public function career() {
+        return $this->belongsTo('App\Career');
+    }
+
+    public function anexos19() {
+        return $this->hasMany('App\Anexo19');
+    }
 }

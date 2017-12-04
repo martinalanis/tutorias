@@ -37,6 +37,12 @@
 			</ul>
 		</li>
 		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-submenu>Anexos <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><a href="{{ route('anexo19.index') }}">Anexo 19</a></li>
+			</ul>
+		</li>
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-submenu>Opciones <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><a href="#!">Perfil</a></li>
