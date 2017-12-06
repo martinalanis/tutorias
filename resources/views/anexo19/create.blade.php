@@ -100,26 +100,26 @@
 									</tr>
 				        		</thead>
 				        		<tbody>
-				        			<input type="hidden" name="data[${i}]['control']" value="${alumno.username}">
-				        			<input type="hidden" name="data[${i}]['nombre']" value="${alumno.name} ${alumno.last_name} ${alumno.second_last_name}">
+				        			<input type="hidden" name="data[${i}][control]" value="${alumno.username}">
+				        			<input type="hidden" name="data[${i}][nombre]" value="${alumno.name} ${alumno.last_name} ${alumno.second_last_name}">
 				        			<tr>
 				        				<td>
 											<div>
-												<input type="checkbox" name="data[${i}]['individual']" value="si"> Tutoria Individual
-												<br><input type="checkbox" name="data[${i}]['grupal']" value="si"> Tutoria Grupal
+												<input type="checkbox" name="data[${i}][individual]" value="si"> Tutoria Individual
+												<br><input type="checkbox" name="data[${i}][grupal]" value="si"> Tutoria Grupal
 											</div>
 
 				        				</td>
 				        				<td>
 				        					<div class="form-group label-floating is-empty">
 				        						<label for="asistencia[]" class="control-label">% Asistencia:</label>
-												<input type="text" name="data[${i}]['asistencia']" class="form-control">
+												<input type="text" name="data[${i}][asistencia]" class="form-control">
 								            </div>
 				        				</td>
 				        				<td>
 				        					<div class="form-group label-floating is-empty">
 				        						<label for="est_can[]" class="control-label">Estudiantes canalizados en el semestre:</label>
-												<input type="text" name="data[${i}]['est_can']" class="form-control">
+												<input type="text" name="data[${i}][est_can]" class="form-control">
 								            </div>
 				        				</td>
 				        			</tr>
@@ -127,7 +127,7 @@
 				        				<td colspan="3">
 				        					<div class="form-group label-floating is-empty">
 				        						<label for="observaciones[]" class="control-label">Observaciones:</label>
-												<textarea name="data[${i}]['observaciones']" class="form-control"></textarea>
+												<textarea name="data[${i}][observaciones]" class="form-control"></textarea>
 								            </div>
 				        				</td>
 				        			</tr>

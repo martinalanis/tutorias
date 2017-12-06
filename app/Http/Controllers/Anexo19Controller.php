@@ -62,6 +62,8 @@ class Anexo19Controller extends Controller
     public function show($id)
     {
         //
+        $anexo = Anexo19::find($id);
+        return view('anexo19.ver', compact('anexo'));
     }
 
     /**
