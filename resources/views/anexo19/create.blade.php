@@ -21,6 +21,10 @@
 	#response table td {
 		padding: 0 15px;
 	}
+
+	.form-group label {
+		color: #777;
+	}
 </style>
 
 @endsection
@@ -91,49 +95,43 @@
 					str += `<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th width="40%">${alumno.username}</th>
-										<th>${alumno.name} ${alumno.last_name} ${alumno.second_last_name}</th>
+										<th>${alumno.username}</th>
+										<th colspan="2">${alumno.name} ${alumno.last_name} ${alumno.second_last_name}</th>
 									</tr>
 				        		</thead>
 				        		<tbody>
+				        			<input type="hidden" name="data[${i}]['control']" value="${alumno.username}">
+				        			<input type="hidden" name="data[${i}]['nombre']" value="${alumno.name} ${alumno.last_name} ${alumno.second_last_name}">
 				        			<tr>
 				        				<td>
-				        					<div class="form-group label-floating">
-				        						<label for="tut_grupal[]" class="control-label">Tutoria Grupal:</label>
-												<input type="text" name="tut_grupal[]" class="form-control" required>
-									        </div>
+											<div>
+												<input type="checkbox" name="data[${i}]['individual']" value="si"> Tutoria Individual
+												<br><input type="checkbox" name="data[${i}]['grupal']" value="si"> Tutoria Grupal
+											</div>
+
 				        				</td>
 				        				<td>
-				        					<div class="form-group label-floating">
-				        						<label for="tut_individual[]" class="control-label">Tutoria Individual:</label>
-												<input type="text" name="tut_individual[]" class="form-control" required>
-									        </div>
-				        				</td>
-				        			</tr>
-				        			<tr>
-				        				<td>
-				        					<div class="form-group label-floating">
-				        						<label for="observaciones[]" class="control-label">Observaciones:</label>
-												<input type="text" name="observaciones[]" class="form-control" required>
-								            </div>
-				        				</td>
-				        				<td>
-				        					<div class="form-group label-floating">
+				        					<div class="form-group label-floating is-empty">
 				        						<label for="asistencia[]" class="control-label">% Asistencia:</label>
-												<input type="text" name="asistencia[]" class="form-control" required>
+												<input type="text" name="data[${i}]['asistencia']" class="form-control">
+								            </div>
+				        				</td>
+				        				<td>
+				        					<div class="form-group label-floating is-empty">
+				        						<label for="est_can[]" class="control-label">Estudiantes canalizados en el semestre:</label>
+												<input type="text" name="data[${i}]['est_can']" class="form-control">
 								            </div>
 				        				</td>
 				        			</tr>
 				        			<tr>
-				        				<td colspan="2">
-				        					<div class="form-group label-floating">
-				        						<label for="est_can[]" class="control-label">Estudiantes canalizados en el semestre:</label>
-												<input type="text" name="est_can[]" class="form-control" required>
+				        				<td colspan="3">
+				        					<div class="form-group label-floating is-empty">
+				        						<label for="observaciones[]" class="control-label">Observaciones:</label>
+												<textarea name="data[${i}]['observaciones']" class="form-control"></textarea>
 								            </div>
 				        				</td>
 				        			</tr>
-				        			<input type="hidden" name="control[]" value="${alumno.username}">
-				        			<input type="hidden" name="nombre[]" value="${alumno.name} ${alumno.last_name} ${alumno.second_last_name}">
+				        		
 				        		</tbody>
 		        	</table>`;
 				});
@@ -144,6 +142,11 @@
 				alert(res);
 			}
 		});
+	});
+
+	$("form").submit(function(e){
+		// e.preventDefault();
+		// alert($(this).serialize());
 	});
 </script>
 @endsection

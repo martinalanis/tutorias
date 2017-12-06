@@ -25,12 +25,21 @@
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
+								<th>Departamento.</th>
 								<th>Grupo</th>
-								<th>Fecha</th>
+								<th>Opciones</th>
 							</tr>
 						</thead>
 						<tbody>
-							
+							@foreach($anexos as $anexo)
+							<tr>
+								<td>{{ $anexo->dpto }}</td>
+								<td>{{ $anexo->group->identifier }}</td>
+								<td>
+									<a href="{{ route('anexo19.show', $anexo->id) }}" class="btn btn-primary btn-raised btn-mini">ver</a>
+								</td>
+							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>

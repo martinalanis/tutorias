@@ -20,4 +20,8 @@ class Group extends Model
     public function alumnos() {
     	return $this->hasMany('App\User');
     }
+
+    public function anexo19() {
+        return $this->hasOne('App\Anexo19');
+    }
 }

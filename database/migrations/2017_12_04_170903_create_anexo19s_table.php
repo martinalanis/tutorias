@@ -20,6 +20,8 @@ class CreateAnexo19sTable extends Migration
             $table->string('dpto');
             $table->string('programa');
             $table->text('data');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

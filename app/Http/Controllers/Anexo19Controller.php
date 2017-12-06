@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Anexo19;
 use App\Group;
 use App\User;
@@ -17,7 +18,8 @@ class Anexo19Controller extends Controller
     public function index()
     {
         //
-        return view('anexo19.lista');
+        $anexos = Anexo19::where('user_id', Auth::id())->get();
+        return view('anexo19.lista', compact('anexos'));
     }
 
     /**
@@ -28,7 +30,8 @@ class Anexo19Controller extends Controller
     public function create()
     {
         //
-        $groups = Group::pluck('identifier', 'id');
+        $anexoGroups = Anexo19::pluck('group_id')->all();
+        $groups = Group::whereNotIn('id', $anexoGroups)->pluck('identifier', 'id');
         return view('anexo19.create', compact('groups'));
     }
 
@@ -41,6 +44,13 @@ class Anexo19Controller extends Controller
     public function store(Request $request)
     {
         //
+        $anexo = new Anexo19($request->all());
+        $anexo->user_id = Auth::id();
+        $anexo->data = json_encode($request->input('data'));
+
+        if($anexo->save()){
+            return redirect()->route('anexo19.index');
+        }
     }
 
     /**
