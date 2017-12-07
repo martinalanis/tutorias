@@ -89,8 +89,10 @@
 			success: function(res){
 
 				var str = "";
+				
 
-				$.each(JSON.parse(res), function(i, alumno){
+				$.each(JSON.parse(res.alumnos), function(i, alumno){
+
 
 					str += `<table class="table table-bordered">
 								<thead>
@@ -104,9 +106,13 @@
 				        			<input type="hidden" name="data[${i}][nombre]" value="${alumno.name} ${alumno.last_name} ${alumno.second_last_name}">
 				        			<tr>
 				        				<td>
-											<div>
-												<input type="checkbox" name="data[${i}][individual]" value="si"> Tutoria Individual
-												<br><input type="checkbox" name="data[${i}][grupal]" value="si"> Tutoria Grupal
+											<div>`;
+									if(res.semestre == 1){
+							        	str +=`<input type="checkbox" checked name="data[${i}][grupal]" value="si"> Tutoria Grupal`;
+							        }else{
+							        	str +=`<input type="checkbox" name="data[${i}][grupal]" value="si"> Tutoria Grupal`;
+							        }
+										str +=`<br><input type="checkbox" name="data[${i}][individual]" value="si"> Tutoria Individual
 											</div>
 
 				        				</td>

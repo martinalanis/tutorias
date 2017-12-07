@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     //
-    protected $fillable = ['identifier', 'name', 'periodo', 'carrer_id', 'user_id'];
+    protected $fillable = ['identifier', 'carrer_id', 'user_id', 'name', 'periodo', 'semestre'];
 
     public function tutor() {
     	return $this->belongsTo('App\User');

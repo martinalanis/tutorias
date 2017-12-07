@@ -104,7 +104,11 @@ class Anexo19Controller extends Controller
 
         $group = Group::find($group);
         $alumnos = $group->alumnos;
+        $semestre = $group->semestre;
 
-        return response()->json(json_encode($alumnos));
+        return response()->json([
+            'alumnos' => json_encode($alumnos),
+            'semestre' => $semestre
+        ]);
     }
 }

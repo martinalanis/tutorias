@@ -15,11 +15,12 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('identifier');
-            $table->string('name');
-            $table->enum('periodo', ['Enero-Junio', 'Verano', 'Agosto-Diciembre']);
             $table->string('career_id');
             $table->integer('user_id')->unsigned();
+            $table->string('identifier');
+            $table->string('name');
+            $table->integer('semestre');
+            $table->enum('periodo', ['Enero-Junio', 'Verano', 'Agosto-Diciembre']);
             $table->foreign('career_id')->references('identifier')->on('careers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

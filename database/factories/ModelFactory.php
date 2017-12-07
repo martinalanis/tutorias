@@ -37,15 +37,17 @@ $factory->define(User::class, function (Generator $faker) {
 $factory->define(Group::class, function (Generator $faker) {
 
 	$careers = ['DESA','IBIQ','IELC','IELE','IIGE','IIND','IINF','IMAT','IMEC','ISIC','ITIC','LADM','LCON'];
-	$years = ['A', 'B'];
+	$group = ['A', 'B'];
 	$periodo = ['Enero-Junio', 'Verano', 'Agosto-Diciembre'];
+    $semestre = $faker->numberBetween($min = 1, $max = 3);
 
     return [
-        'identifier' => $faker->randomElement($careers).'-'.$faker->numberBetween($min = 2014, $max = 2017).'-'.$faker->numberBetween($min = 1, $max = 3).'-'.$faker->randomElement($years),
+        'identifier' => $faker->randomElement($careers).'-'.$faker->numberBetween($min = 2014, $max = 2017).'-'.$semestre.'-'.$faker->randomElement($group),
         'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
         'periodo' => $faker->randomElement($periodo),
         'career_id' => $faker->randomElement($careers),
         'user_id' => $faker->numberBetween($min = 4, $max = 9),
+        'semestre' => $semestre
     ];
 });
 
